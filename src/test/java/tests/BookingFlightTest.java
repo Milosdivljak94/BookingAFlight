@@ -8,9 +8,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.BasePage;
+import pages.ContactDetailsPage;
 import pages.FlightsPage;
 import pages.FlightsResultsPage;
 
+import java.awt.*;
 import java.io.IOException;
 
 
@@ -33,19 +35,29 @@ public class BookingFlightTest extends BaseTest {
     @Test(description = "Booking a flight")
     @Description ("Simple end to end test")
     @Parameters
-            ({"whereFromLocation", "whereToLocation", "departDate", "returnDate", "indexOfCheckBox", "filters", "description"})
+            ({"whereFromLocation", "whereToLocation", "departDate", "returnDate", "indexOfCheckBox", "filters", "description", "email", "country", "contactNum", "firstName", "lastName", "gender", "monthOfBirth", "dayOfBirth", "yearOfBirth"})
     public void bookingFlightTest(String whereFromLocation,
                                   String whereToLocation,
                                   String departDate,
                                   String returnDate,
                                   int indexOfCheckBox,
                                   String filters,
-                                  String description)
-            throws InterruptedException, IOException {
+                                  String description,
+                                  String email,
+                                  String country,
+                                  int contactNum,
+                                  String firstName,
+                                  String lastName,
+                                  String gender,
+                                  int monthOfBirth,
+                                  int dayOfBirth,
+                                  int yearOfBirth)
+            throws InterruptedException, IOException, AWTException {
 
         BasePage basePage = new BasePage(driver);
         FlightsPage flightsPage = new FlightsPage(driver);
         FlightsResultsPage flightsResultsPage = new FlightsResultsPage(driver);
+        ContactDetailsPage contactDetailsPage = new ContactDetailsPage(driver);
 
         flightsPage.addWhereFromLocation(whereFromLocation);
         flightsPage.addWhereToLocation(whereToLocation);
@@ -58,6 +70,14 @@ public class BookingFlightTest extends BaseTest {
         Assert.assertEquals("true", driver.findElements(By.xpath("//div[@class='css-icaorl']//input[@type='checkbox']")).get(2).getAttribute("checked"));
         flightsResultsPage.clickFlightButton();
         flightsResultsPage.clickSelectButton();
+        basePage.clickElement(driver.findElement(By.cssSelector("[data-testid='checkout_ticket_type_inner_next'] , [data-testid='checkout_fare_inner_next']")));
+        contactDetailsPage.enterContactEmail(email);
+        contactDetailsPage.selectContactNumCountry(country);
+        contactDetailsPage.enterContactNum(contactNum);
+        contactDetailsPage.enterFirstName(firstName);
+        contactDetailsPage.enterLastName(lastName);
+        contactDetailsPage.setGender(gender);
+        contactDetailsPage.setDateOfBirth(monthOfBirth, dayOfBirth, yearOfBirth);
 
     }
 

@@ -15,6 +15,15 @@
     <parameter name="indexOfCheckBox" value="2"/>
     <parameter name="filters" value="firstTestFilters"/>
     <parameter name="description" value="Passed test"/>
+    <parameter name="email" value="qwerty@gmail.com"/>
+    <parameter name="country" value="Japan"/>
+    <parameter name="contactNum" value="123456789"/>
+    <parameter name="firstName" value="Zika"/>
+    <parameter name="lastName" value="Slika"/>
+    <parameter name="gender" value="M"/>
+    <parameter name="monthOfBirth" value="9"/>
+    <parameter name="dayOfBirth" value="24"/>
+    <parameter name="yearOfBirth" value="1994"/>
 
     <test name="BookingAFlightPass">
 
