@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="BookingAFlight">
+
+    <parameter name="BROWSER" value="CHROME"/>
+    <parameter name="BROWSER_VERSION" value="97"/>
+    <parameter name="ENV" value="QA"/>
+    <parameter name="WAIT" value="20"/>
+
+    <parameter name="whereFromLocation" value="New York"/>
+    <parameter name="whereToLocation" value="Chicago"/>
+    <parameter name="departDate" value="2022-03-06"/>
+    <parameter name="returnDate" value="2022-04-11"/>
+
+    <test name="BookingAFlight">
+
+        <classes>
+            <class name="tests.BookingFlightTest"/>
+        </classes>
+
+    </test>
+
+
+</suite>
