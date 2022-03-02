@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="BookingAFlight">
+<suite name="BookingAFlight" parallel="tests" thread-count="2">
 
     <parameter name="BROWSER" value="CHROME"/>
     <parameter name="BROWSER_VERSION" value="97"/>
@@ -12,8 +12,32 @@
     <parameter name="whereToLocation" value="Chicago"/>
     <parameter name="departDate" value="2022-03-06"/>
     <parameter name="returnDate" value="2022-04-11"/>
+    <parameter name="indexOfCheckBox" value="2"/>
+    <parameter name="filters" value="firstTestFilters"/>
+    <parameter name="description" value="Passed test"/>
+    <parameter name="email" value="qwerty@gmail.com"/>
+    <parameter name="country" value="Japan"/>
+    <parameter name="contactNum" value="123456789"/>
+    <parameter name="firstName" value="Zika"/>
+    <parameter name="lastName" value="Slika"/>
+    <parameter name="gender" value="M"/>
+    <parameter name="monthOfBirth" value="9"/>
+    <parameter name="dayOfBirth" value="24"/>
+    <parameter name="yearOfBirth" value="1994"/>
 
-    <test name="BookingAFlight">
+    <test name="BookingAFlightPass">
+
+        <classes>
+            <class name="tests.BookingFlightTest"/>
+        </classes>
+
+    </test>
+
+    <test name="BookingAFlightFail">
+
+        <parameter name="indexOfCheckBox" value="3"/>
+        <parameter name="filters" value="secondTestFilters"/>
+        <parameter name="description" value="Failed test"/>
 
         <classes>
             <class name="tests.BookingFlightTest"/>
